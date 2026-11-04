@@ -351,13 +351,13 @@
     border: 2px solid var(--amber);
     flex-shrink: 0;
 }
+
 @media (max-width: 720px) {
     .hero-row {
         flex-direction: column;
         align-items: flex-start;
     }
 }
-
 
 .project-card { display: block; text-decoration: none; color: inherit; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
