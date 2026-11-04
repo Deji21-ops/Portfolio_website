@@ -26,3 +26,30 @@
     });
   });
 
+fetch('https://api.github.com/users/Deji21-ops/repos?sort=updated&per_page=12')
+  .then(res => res.json())
+  .then(repos => {
+    const grid = document.getElementById('repo-grid');
+    repos
+      .filter(r => !r.fork && r.name !== 'Portfolio_website')
+      .forEach((r, i) => {
+        const card = document.createElement('a');
+        card.className = 'project-card';
+        card.href = r.html_url;
+        card.target = '_blank';
+
+        const num = document.createElement('div');
+        num.className = 'num';
+        num.textContent = String(i + 1).padStart(2, '0');
+
+        const title = document.createElement('h3');
+        title.textContent = r.name;
+
+        const desc = document.createElement('p');
+        desc.textContent = r.description || 'No description yet.';
+
+        card.append(num, title, desc);
+        grid.appendChild(card);
+      });
+  })
+  .catch(() => {});
